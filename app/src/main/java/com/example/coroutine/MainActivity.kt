@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
    }
     fun fetchadvice(): String {
         var rsponse = ""
-
         try {
             rsponse = URL("https://api.adviceslip.com/advice").readText(Charsets.UTF_8)
         } catch (e: Exception) {
@@ -48,19 +47,13 @@ class MainActivity : AppCompatActivity() {
 
         withContext(Dispatchers.Main)
     {
-for (i in data)
+
         val jsonObject= JSONObject(data)
         val slip=jsonObject.getJSONObject("slip")
         val newone=slip.getString("advice")
-//        val jsonObject1= JSONObject(data1)
-//        val slip1=jsonObject.getJSONObject("slip")
-//        val newone1=slip.getString("advice")
+//
         tv.text=newone
    }
     }
-//suspend fun returnadvice(data: String): String{
-//
-//
-//    return newone
-//}
+
 }
